@@ -35,7 +35,11 @@ namespace DiskReader
 					this.ShowDriveInfoStatus();
 
 					if (this.driveInfo.IsReady)
+					{
+						this.treeView1.BeginUpdate();
 						BuildTree(this.driveInfo.RootDirectory, this.treeView1.Nodes);
+						this.treeView1.EndUpdate();
+					}
 
 					this.treeView1.ExpandAll();
 				};
