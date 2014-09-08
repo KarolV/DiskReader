@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("IBM")]
 [assembly: AssemblyProduct("DiskReader")]
-[assembly: AssemblyCopyright("Copyright © IBM 2014")]
+[assembly: AssemblyCopyright("Copyright © Karol Vecerek 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
