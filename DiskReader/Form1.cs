@@ -15,9 +15,9 @@ namespace DiskReader
 
 		public Form1()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 
-			InitializeControls();
+			this.InitializeControls();
 
 			this.driveInfo = DriveInfo.GetDrives().FirstOrDefault(d => d.DriveType == DriveType.CDRom);
 
@@ -44,7 +44,7 @@ namespace DiskReader
 						                        {
 							                        if (!this.checkBox1.Checked)
 								                        this.ActionInvoker(this.treeView1.BeginUpdate);
-							                        BuildTree(this.driveInfo.RootDirectory, this.treeView1.Nodes);
+							                        this.BuildTree(this.driveInfo.RootDirectory, this.treeView1.Nodes);
 													if (!this.checkBox1.Checked)
 														this.ActionInvoker(this.treeView1.EndUpdate);
 						                        }
@@ -82,11 +82,7 @@ namespace DiskReader
 		{
 			this.toolStripStatusLabel1.Text = this.driveInfo == null
 				? string.Empty
-				: string.Format("{0} [{1}]",
-				                this.driveInfo.Name,
-				                this.driveInfo.IsReady
-					                ? this.driveInfo.VolumeLabel
-					                : Resources.DiskSatatus_InsertDisk);
+				: $"{this.driveInfo.Name} [{(this.driveInfo.IsReady ? this.driveInfo.VolumeLabel : Resources.DiskSatatus_InsertDisk)}]";
 		}
 
 		private void BuildTree(DirectoryInfo directoryInfo, TreeNodeCollection treeNodeCollection)
@@ -106,7 +102,7 @@ namespace DiskReader
 				}
 
 			foreach (var subdir in directoryInfo.GetDirectories())
-				BuildTree(subdir, currentNode.Nodes);
+				this.BuildTree(subdir, currentNode.Nodes);
 		}
 
 		#region Methods invokers
